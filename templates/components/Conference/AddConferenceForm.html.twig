@@ -5,7 +5,17 @@
             'data-live-action-param': 'save'
         }
     }) }}
-        {{ form_widget(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description, {
+            attr: stimulus_controller('input-counter')|stimulus_action('input-counter', 'check').toArray()
+        }) }}
+        {{ form_row(form.accessible) }}
+        {{ form_row(form.prerequisites, {
+            attr: stimulus_controller('input-counter')|stimulus_action('input-counter', 'check').toArray()
+        }) }}
+        {{ form_row(form.startAt) }}
+        {{ form_row(form.endAt) }}
+        {{ form_row(form.organizations) }}
         <button type="submit" class="btn btn-primary">{{ button_label|default('Send') }}</button>
     {{ form_end(form) }}
 </div>

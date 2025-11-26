@@ -11,10 +11,12 @@ use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
+use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent]
 class ListFilterForm extends AbstractController
 {
+    use DefaultActionTrait;
     use ComponentWithFormTrait;
 
     #[LiveProp(writable: true, url: true)]
@@ -30,10 +32,6 @@ class ListFilterForm extends AbstractController
         ], [
             'csrf_protection' => false,
         ]);
-    }
-
-    public function __invoke()
-    {
     }
 
     #[LiveAction]

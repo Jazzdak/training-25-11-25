@@ -19,9 +19,22 @@ class ConferenceType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'attr' => [
+                    'minLength' => 30,
+                    //'data-action' => 'input-counter#check',
+                    //'data-controller' => 'input-counter',
+                ],
+            ])
             ->add('accessible', CheckboxType::class, ['required' => false])
-            ->add('prerequisites', TextareaType::class, ['required' => false])
+            ->add('prerequisites', TextareaType::class, [
+                'required' => false,
+                'attr' => [
+                    'minLength' => 30,
+                    //'data-action' => 'input-counter#check',
+                    //'data-controller' => 'input-counter',
+                ],
+            ])
             ->add('startAt', DateType::class, [
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
