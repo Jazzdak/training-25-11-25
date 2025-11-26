@@ -29,7 +29,7 @@ class Conference
 
     #[Assert\NotNull()]
     #[ORM\Column]
-    private ?bool $accessible = null;
+    private bool $accessible = false;
 
     #[Assert\Length(min: 20)]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -123,7 +123,7 @@ class Conference
         return $this->startAt;
     }
 
-    public function setStartAt(\DateTimeImmutable $startAt): static
+    public function setStartAt(?\DateTimeImmutable $startAt = null): static
     {
         $this->startAt = $startAt;
 
@@ -135,7 +135,7 @@ class Conference
         return $this->endAt;
     }
 
-    public function setEndAt(\DateTimeImmutable $endAt): static
+    public function setEndAt(?\DateTimeImmutable $endAt = null): static
     {
         $this->endAt = $endAt;
 

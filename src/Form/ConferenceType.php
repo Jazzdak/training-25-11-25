@@ -20,7 +20,7 @@ class ConferenceType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('accessible', CheckboxType::class)
+            ->add('accessible', CheckboxType::class, ['required' => false])
             ->add('prerequisites', TextareaType::class, ['required' => false])
             ->add('startAt', DateType::class, [
                 'widget' => 'single_text',
