@@ -1,0 +1,20 @@
+<div{{ attributes }}>
+    <div class="card">
+        <div class="card-body">
+            {% if poll is not null %}
+            {% for vote in poll.votes %}
+                <div class="mb-2">
+                    <span>{{ vote.name }}: {{ vote.count }} votes</span>
+                </div>
+            {% endfor %}
+                <twig:Conference:AddVote :conference="conference"></twig:Conference:AddVote>
+            {% else %}
+                <button class="btn btn-outline-primary"
+                        {{ live_action('newPoll') }}
+                >
+                    Add Poll
+                </button>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ORM\ChangeTrackingPolicy('DEFERRED_EXPLICIT')]
 #[ORM\Entity(repositoryClass: ConferenceRepository::class)]
 class Conference
 {
@@ -58,6 +59,9 @@ class Conference
     #[Assert\Valid()]
     #[ORM\ManyToMany(targetEntity: Organization::class, inversedBy: 'conferences')]
     private Collection $organizations;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Poll $poll = null;
 
     public function __construct()
     {
@@ -192,6 +196,18 @@ class Conference
     public function removeOrganization(Organization $organization): static
     {
         $this->organizations->removeElement($organization);
+
+        return $this;
+    }
+
+    public function getPoll(): ?Poll
+    {
+        return $this->poll;
+    }
+
+    public function setPoll(?Poll $poll): static
+    {
+        $this->poll = $poll;
 
         return $this;
     }
