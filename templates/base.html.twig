@@ -11,12 +11,26 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body data-controller="modal">
         <header>
             {{ include('includes/_navbar.html.twig') }}
         </header>
         <main class="container my-5">
-            {% block body %}{% endblock %}
+            <turbo-frame id="main-frame">
+                {% block body %}{% endblock %}
+            </turbo-frame>
         </main>
+
+        {# Conference creation modal #}
+        <div class="modal modal-lg" tabindex="-1" id="modal" data-modal-target="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <turbo-frame id="modal-frame"></turbo-frame>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

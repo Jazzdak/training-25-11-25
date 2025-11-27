@@ -36,4 +36,10 @@ final class MainController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/image', name: 'app_main_image')]
+    public function image(): Response
+    {
+        return $this->render('main/image.html.twig');
+    }
 }
