@@ -40,8 +40,14 @@ class ConferenceController extends AbstractController
     }
 
     #[Route('/conference/{id}', name: 'app_conference_show', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show(Conference $conference): Response
+    public function show(Request $request, Conference $conference): Response
     {
+        if ($request->headers->get('Turbo-Frame')) {
+            return $this->render('conference/_show-details.html.twig', [
+                'conference' => $conference,
+                ]);
+        }
+
         return $this->render('conference/show.html.twig', [
             'conference' => $conference,
         ]);

@@ -3,21 +3,9 @@
 {% block title %}{{ conference.name }} - Details{% endblock %}
 
 {% block body %}
-<div class="container flex-grow-1 container-p-y">
-    <div class="row">
-        <div class="col-md-8 m-auto">
-            <twig:Conference:Details :conference="conference"></twig:Conference:Details>
-        </div>
+    <div class="container flex-grow-1 container-p-y">
+        <turbo-frame id="conference-list">
+            {{ include('conference/_details.html.twig') }}
+        </turbo-frame>
     </div>
-    <div class="row">
-        <div class="col-md-8 m-auto justify-content-start">
-            <a href="{{ path('app_volunteering_new', {'conference': conference.id}) }}">
-                <button class="btn text-white" style="background-color: limegreen;">Volunteer on this event</button>
-            </a>
-            <a href="{{ path('app_conference_list') }}">
-                <button class="btn text-black bg-white" style="border-color: limegreen;">Back</button>
-            </a>
-        </div>
-    </div>
-</div>
 {% endblock %}

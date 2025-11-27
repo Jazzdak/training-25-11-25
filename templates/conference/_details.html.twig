@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-8 m-auto">
+        <twig:Conference:Details :conference="conference"></twig:Conference:Details>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 m-auto justify-content-start">
+        <a href="{{ path('app_volunteering_new', {'conference': conference.id}) }}">
+            <button class="btn text-white" style="background-color: limegreen;">Volunteer on this event
+            </button>
+        </a>
+        <a href="{{ path('app_conference_list') }}" data-turbo-action="advance">
+            <button class="btn text-black bg-white" style="border-color: limegreen;">Back</button>
+        </a>
+    </div>
+</div>
